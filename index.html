@@ -1,0 +1,388 @@
+<html>
+<head>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<style>
+
+h1 {
+	color: 48484a;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
+	font-size: 40px;
+}
+p {
+	color: 48484a;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
+	font-size: 18px;
+	}
+.buttons {
+    width: 218px;
+    height: 98px;
+	background: url(images/gray_button.png);
+	background-repeat: repeat-n;
+	margin: 10 0 10 20;
+    line-height: 100px;
+	text-align: center;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
+	color: #FFFFFF;
+	font-size: 50px;
+}
+.button_select {
+    width: 218px;
+    height: 98px;
+	background: url(images/green_button.png);
+	background-repeat: repeat-n;
+	margin: 10 0 10 20;
+    line-height: 100px;
+	text-align: center;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
+	color: #FFFFFF;
+	font-size: 50px;
+}
+
+.buttons {
+	cursor: pointer;
+}
+		::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+			color: #FFFFFF;
+			opacity: 1; /* Firefox */
+		}
+
+		:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: #FFFFFF;
+		}
+
+		::-ms-input-placeholder { /* Microsoft Edge */
+			color: #FFFFFF;
+		}
+	.title{
+		color: #48484a;
+		font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
+		font-size: 30px;
+		font-weight: 900;
+	}
+	.filter-input{
+		display: inline;
+		float: left;
+		width: 150px;
+		height: 40px;
+		background: #48484a;
+		margin-right: 20px;
+		text-align: center;
+		font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
+		color: #FFFFFF;
+		border-radius: 5px;
+		line-height: 40px;
+		border-style: none;
+	}
+
+	.athlete-info{
+		width:600px;
+		float: left;
+		margin: 45px 0 0 0;
+	}
+
+	.athlete-info > img{
+		width: 412px;
+		height: 528px;
+		border: none;
+		margin-bottom: 30px;
+	}
+
+	.right-content{
+		height: 1920px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		direction: rtl;
+	}
+
+	.filter-container, athlete-container{
+		direction: ltr;
+	}
+
+
+	.year-btn-container{
+		height:1840px;
+		overflow-y: auto;
+		overflow: hidden;
+	}
+	.arrow-scroller-down{
+		text-align: center;
+		font-size: 6em;
+		color: #48484a;
+		margin-top: -30px;
+		cursor: pointer;
+	}
+	.arrow-scroller-up{
+		text-align: center;
+		font-size: 6em;
+		color: #48484a;
+		margin-bottom: -30px;
+		margin-top: -60px;
+		cursor: pointer;
+		opacity: 0;
+		transition: .3s;
+	}
+
+	/** scroll bar css **/
+	/* width */
+	::-webkit-scrollbar {
+		width: 20px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		box-shadow: inset 0 0 5px grey;
+		border-radius: 0px;
+		background: #8bc53e;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #48484a;
+		border-radius: 20px;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #48484a;
+	}
+</style>
+</head>
+
+<body>
+<div style="width:1080px; height:498px; align-content: center"><img src="images/header.png" width="1080" height="498"images/header.png" border="0"></div>
+
+<div style="width:1080px; height:1920px; background: url(images/background.png);">
+
+	<div style="width:300px; float: left; padding-top: 35px;"  class="col-md-3 left-panel">
+			<div class="arrow-scroller-up">
+				<i class="fa fa-caret-up"></i>
+			</div>
+			<div class="year-btn-container">
+			</div>
+			<div class="arrow-scroller-down">
+				<i class="fa fa-caret-down"></i>
+			</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9 right-content">
+			<div class="filter-container" style="width:600px; float: left; margin: 45 0 0 0;">
+				<span class="title">LOOK UP BY:</span>
+				<div class="filter-container">
+					<input type="text" class="filter-input filter-name" placeholder="NAME">
+					<input type="text" class="filter-input filter-sport" placeholder="SPORT" >
+					<select type="text" class="filter-input filter-year" placeholder="YEAR" style="text-indent: 30%;">
+
+					</select>
+				</div>
+
+			</div>
+			<div class="athlete-container">
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+	  $('.arrow-scroller-down').click(function(){
+				$('.year-btn-container').animate({
+          scrollTop: $('.year-btn-container').scrollTop() + 325,
+				}, 500);
+
+      setTimeout(function(){
+				if($('.year-btn-container').scrollTop() >= 325){
+					$('.arrow-scroller-up').css('opacity', 1);
+				}
+      }, 600);
+		});
+
+    $('.arrow-scroller-up').click(function(){
+      $('.year-btn-container').animate({
+        scrollTop: $('.year-btn-container').scrollTop() - 325,
+      }, 500);
+
+      setTimeout(function(){
+        if($('.year-btn-container').scrollTop() <= 325){
+          $('.arrow-scroller-up').css('opacity', 0);
+        }
+			}, 600);
+
+    });
+	});
+</script>
+<script>
+	var jsonData;
+  var filePath = 'BG_Info_All.xml';
+  $.ajax({
+    type: "GET",
+    url: filePath,
+    dataType: "xml",
+    success: function(obj) {
+      var jsonObject = xmlToJson(obj);
+      jsonData = jsonObject;
+      $yearBtnHtml = '';
+      $yearSearchHtml = '<option data-year="" value="">YEAR</option>';
+      $.each(jsonObject.entrylist.year, function (index, key) {
+        $year = key['@attributes']['id'];
+        if(index == 0){
+          $defaultYear = $year;
+				}
+				// generate year;
+				$selectedYear = (index == 0 ? 'button_select' : '');
+        $yearBtnHtml += '<div class="buttons '+$selectedYear+'" data-year="'+$year+'">'+$year+'</div>';
+        $yearSearchHtml += '<option value="'+$year+'" data-year="'+$year+'">'+$year+'</option>';
+      });
+
+      $('.year-btn-container').html($yearBtnHtml);
+      $('.filter-year').html($yearSearchHtml);
+
+      filter(jsonData, '', '', $defaultYear, 'button');
+
+
+      $('.buttons').on('click', function(){
+        $('.buttons').removeClass('button_select');
+        $(this).addClass('button_select');
+        $year = $(this).attr('data-year');
+        filter(jsonData, '', '', $year, 'button');
+			});
+
+
+      $('.filter-input').on('keyup', function(){
+        	$name = $('.filter-name').val();
+        	$sport = $('.filter-sport').val();
+        	$year = $('.filter-year').val();
+					filter(jsonData, $name, $sport, $year, 'input');
+			});
+
+      $('.filter-year').on('change', function(){
+        $name = $('.filter-name').val();
+        $sport = $('.filter-sport').val();
+        $year = $('.filter-year').val();
+
+        console.log($name + ' - ' + $sport + ' - ' + $year);
+        filter(jsonData, $name, $sport, $year, 'input');
+			});
+
+    }
+  });
+
+
+  function filter($data, $fName, $fSport, $fYear, $origin){
+    $athleteContainer = '';
+    $count = 0;
+    $.each($data.entrylist.year, function (index, key) {
+      $year = key['@attributes']['id'];
+      if($origin == 'button'){
+        if($year == $fYear){
+          $entries = key['entry'];
+          console.log($entries);
+          $.each($entries, function(index, key){
+            $info = key['@attributes'];
+            if($fName == '' && $fSport == ''){
+              $('.filter-name').val('');
+              $('.filter-year').val('').trigger('select');
+              $('.filter-sport').val('');
+              $athleteContainer += generateHtml($info, $year);
+              $count++;
+            }
+
+          });
+				}
+			}else{
+        $entries = key['entry'];
+
+
+        // scan all if year is empty
+				if($fYear != ''){
+					if($fYear == $year){
+            console.log('search year Input');
+            $.each($entries, function(index, key){
+              $info = key['@attributes'];
+              $lastname = $info['id'].split(',')[0].trim().toLowerCase();
+              $sport = $info['category'].toLowerCase();
+              if($fName != '' && $fSport == ''){
+                if($lastname.startsWith($fName.toLowerCase()) == true) {
+                  $athleteContainer += generateHtml($info, $year);
+                  $count++;
+                }
+              }
+
+              if($fName == '' && $fSport != ''){
+                if($sport.startsWith($fSport.toLowerCase()) == true) {
+                  $athleteContainer += generateHtml($info, $year);
+                  $count++;
+                }
+              }
+
+              if($fName != '' && $fSport != ''){
+                if($sport.startsWith($fSport.toLowerCase()) == true && $lastname.startsWith($fName.toLowerCase()) == true) {
+                  $athleteContainer += generateHtml($info, $year);
+                  $count++;
+                }
+              }
+
+              if($fName == '' && $fSport == ''){
+                $athleteContainer += generateHtml($info, $year);
+                $count++;
+							}
+            });
+					}
+				}else{
+				  console.log('search year Input');
+          $.each($entries, function(index, key){
+            $info = key['@attributes'];
+            $lastname = $info['id'].split(',')[0].trim().toLowerCase();
+            $sport = $info['category'].toLowerCase();
+            if($fName != '' && $fSport == ''){
+              if($lastname.startsWith($fName.toLowerCase()) == true) {
+                $athleteContainer += generateHtml($info, $year);
+                $count++;
+              }
+            }
+
+            if($fName == '' && $fSport != ''){
+              if($sport.startsWith($fSport.toLowerCase()) == true) {
+                $athleteContainer += generateHtml($info, $year);
+                $count++;
+              }
+						}
+
+            if($fName != '' && $fSport != ''){
+              if($sport.startsWith($fSport.toLowerCase()) == true && $lastname.startsWith($fName.toLowerCase()) == true) {
+                $athleteContainer += generateHtml($info, $year);
+                $count++;
+              }
+            }
+          });
+				}
+
+			}
+
+    });
+
+    $('.athlete-container').html($athleteContainer);
+
+	}
+
+
+  function generateHtml($info, $year){
+    return '<div class="athlete-info">' +
+      '<img src="Pictures/'+$info['filename']+'.jpg" alt=""/>' +
+      '<h1>'+$info['id']+'</h1>' +
+      '<p>'+$info['category']+'<br> '+$year+'</p>' +
+      '<p>'+$info['description']+'</p>' +
+      '</div>';
+  }
+
+
+
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
