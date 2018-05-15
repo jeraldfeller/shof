@@ -41,7 +41,41 @@ p {
 	font-size: 50px;
 }
 
-.buttons {
+.buttons-name {
+	width: 218px;
+	height: 98px;
+	background: url(images/gray_button.png);
+	background-repeat: repeat-n;
+	margin: 10 0 10 20;
+	line-height: 100px;
+	text-align: center;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
+	color: #FFFFFF;
+	font-size: 50px;
+}
+
+.buttons-sports {
+	width: 218px;
+	height: 98px;
+	background: url(images/gray_button.png);
+	background-repeat: repeat-n;
+	margin: 10 0 10 20;
+	text-align: center;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
+	color: #FFFFFF;
+	font-size: 23px;
+	line-height: 30px;
+}
+
+.buttons-sports-select {
+	background: url(images/green_button.png);
+}
+
+.buttons-name-select {
+	background: url(images/green_button.png);
+}
+
+.buttons, .buttons-sports, .buttons-name {
 	cursor: pointer;
 }
 		::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -63,6 +97,7 @@ p {
 		font-weight: 900;
 	}
 	.filter-input{
+		cursor: pointer;
 		display: inline;
 		float: left;
 		width: 150px;
@@ -72,9 +107,13 @@ p {
 		text-align: center;
 		font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;
 		color: #FFFFFF;
-		border-radius: 5px;
+		border-radius: 10px;
 		line-height: 40px;
-		border-style: none;
+		font-weight: bold;
+	}
+
+	.filter-input-select{
+		background: #8bc53e;
 	}
 
 	.athlete-info{
@@ -103,9 +142,23 @@ p {
 
 
 	.year-btn-container{
-		height:1840px;
+		height:1810px;
 		overflow-y: auto;
 		overflow: hidden;
+		display: block;
+	}
+	.sport-btn-container{
+		height:1810px;
+		overflow-y: auto;
+		overflow: hidden;
+		display: none;
+
+	}
+	.name-btn-container{
+		height:1810px;
+		overflow-y: auto;
+		overflow: hidden;
+		display: none;
 	}
 	.arrow-scroller-down{
 		text-align: center;
@@ -118,8 +171,8 @@ p {
 		text-align: center;
 		font-size: 6em;
 		color: #48484a;
-		margin-bottom: -30px;
-		margin-top: -60px;
+		margin-bottom: -25px;
+		margin-top: -50px;
 		cursor: pointer;
 		opacity: 0;
 		transition: .3s;
@@ -162,6 +215,36 @@ p {
 			</div>
 			<div class="year-btn-container">
 			</div>
+			<div class="sport-btn-container">
+			</div>
+			<div class="name-btn-container">
+				<div class="buttons-name buttons-name-select" data-name="A">A</div>
+				<div class="buttons-name" data-name="B">B</div>
+				<div class="buttons-name" data-name="C">C</div>
+				<div class="buttons-name" data-name="D">D</div>
+				<div class="buttons-name" data-name="E">E</div>
+				<div class="buttons-name" data-name="F">F</div>
+				<div class="buttons-name" data-name="G">G</div>
+				<div class="buttons-name" data-name="H">H</div>
+				<div class="buttons-name" data-name="I">I</div>
+				<div class="buttons-name" data-name="J">J</div>
+				<div class="buttons-name" data-name="K">K</div>
+				<div class="buttons-name" data-name="L">L</div>
+				<div class="buttons-name" data-name="M">M</div>
+				<div class="buttons-name" data-name="N">N</div>
+				<div class="buttons-name" data-name="O">O</div>
+				<div class="buttons-name" data-name="P">P</div>
+				<div class="buttons-name" data-name="Q">Q</div>
+				<div class="buttons-name" data-name="R">R</div>
+				<div class="buttons-name" data-name="S">S</div>
+				<div class="buttons-name" data-name="T">T</div>
+				<div class="buttons-name" data-name="U">U</div>
+				<div class="buttons-name" data-name="V">C</div>
+				<div class="buttons-name" data-name="W">W</div>
+				<div class="buttons-name" data-name="X">X</div>
+				<div class="buttons-name" data-name="Y">Y</div>
+				<div class="buttons-name" data-name="Z">Z</div>
+			</div>
 			<div class="arrow-scroller-down">
 				<i class="fa fa-caret-down"></i>
 			</div>
@@ -171,11 +254,9 @@ p {
 			<div class="filter-container" style="width:600px; float: left; margin: 45 0 0 0;">
 				<span class="title">LOOK UP BY:</span>
 				<div class="filter-container">
-					<input type="text" class="filter-input filter-name" placeholder="NAME">
-					<input type="text" class="filter-input filter-sport" placeholder="SPORT" >
-					<select type="text" class="filter-input filter-year" placeholder="YEAR" style="text-indent: 30%;">
-
-					</select>
+					<div type="text" class="filter-input filter-name" data-filter="name" default-value="a">NAME</div>
+					<div type="text" class="filter-input filter-sport" data-filter="sport">SPORT</div>
+					<div type="text" class="filter-input filter-year filter-input-select" data-filter="year">YEAR</div>
 				</div>
 
 			</div>
@@ -190,25 +271,29 @@ p {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
+
 	  $('.arrow-scroller-down').click(function(){
-				$('.year-btn-container').animate({
-          scrollTop: $('.year-btn-container').scrollTop() + 325,
+      	$currentFilter = $('.filter-input-select').attr('data-filter');
+				$('.'+$currentFilter+'-btn-container').animate({
+          scrollTop: $('.'+$currentFilter+'-btn-container').scrollTop() + 1300,
 				}, 500);
 
       setTimeout(function(){
-				if($('.year-btn-container').scrollTop() >= 325){
+				if($('.'+$currentFilter+'-btn-container').scrollTop() >= 320){
 					$('.arrow-scroller-up').css('opacity', 1);
 				}
+
       }, 600);
 		});
 
     $('.arrow-scroller-up').click(function(){
-      $('.year-btn-container').animate({
-        scrollTop: $('.year-btn-container').scrollTop() - 325,
+      $currentFilter = $('.filter-input-select').attr('data-filter');
+      $('.'+$currentFilter+'-btn-container').animate({
+        scrollTop: $('.year-btn-container').scrollTop() - 1300,
       }, 500);
 
       setTimeout(function(){
-        if($('.year-btn-container').scrollTop() <= 325){
+        if($('.'+$currentFilter+'-btn-container').scrollTop() <= 300){
           $('.arrow-scroller-up').css('opacity', 0);
         }
 			}, 600);
@@ -227,146 +312,185 @@ p {
       var jsonObject = xmlToJson(obj);
       jsonData = jsonObject;
       $yearBtnHtml = '';
-      $yearSearchHtml = '<option data-year="" value="">YEAR</option>';
+      $sportsBtnHtml = '';
+      $sportsBtnData = [];
+      console.log(jsonData);
       $.each(jsonObject.entrylist.year, function (index, key) {
         $year = key['@attributes']['id'];
         if(index == 0){
           $defaultYear = $year;
+          $('.filter-year').attr('default-value', $defaultYear);
 				}
 				// generate year;
 				$selectedYear = (index == 0 ? 'button_select' : '');
         $yearBtnHtml += '<div class="buttons '+$selectedYear+'" data-year="'+$year+'">'+$year+'</div>';
-        $yearSearchHtml += '<option value="'+$year+'" data-year="'+$year+'">'+$year+'</option>';
+
+        $entries = key['entry'];
+        $.each($entries, function(index, key){
+          $info = key['@attributes'];
+					if($sportsBtnData.indexOf($info['category']) == -1){
+            $sportsBtnData.push($info['category']);
+					}
+        });
+
       });
-
+      $sportsBtnData = $sportsBtnData.sort();
+			for($x = 0; $x < $sportsBtnData.length; $x++){
+			  if($x == 0){
+          $('.filter-sport').attr('default-value', $sportsBtnData[$x]);
+				}
+			  if($sportsBtnData[$x].length < 15){
+			    $paddingTop = '35px';
+				}else if($sportsBtnData[$x].length < 20){
+          $paddingTop = '30px';
+				}else if($sportsBtnData[$x].length < 37){
+            $paddingTop = '20px';
+				}else if($sportsBtnData[$x].length < 50){
+          $paddingTop = '5px';
+				}
+        $selectedSport = ($x == 0 ? 'buttons-sports-select' : '');
+        $sportsBtnHtml += '<div class="buttons-sports '+$selectedSport+'" style="padding-top:'+$paddingTop+'"  data-sport="'+$sportsBtnData[$x]+'">'+$sportsBtnData[$x]+'</div>';
+			}
       $('.year-btn-container').html($yearBtnHtml);
-      $('.filter-year').html($yearSearchHtml);
+      $('.sport-btn-container').html($sportsBtnHtml);
 
-      filter(jsonData, '', '', $defaultYear, 'button');
+
+      filter(jsonData, '', '', $defaultYear, 'year', 'default');
 
 
       $('.buttons').on('click', function(){
         $('.buttons').removeClass('button_select');
         $(this).addClass('button_select');
         $year = $(this).attr('data-year');
-        filter(jsonData, '', '', $year, 'button');
+        filter(jsonData, '', '', $year, 'year', 'button');
 			});
 
+      $('.buttons-sports').on('click', function(){
+        $('.buttons-sports').removeClass('buttons-sports-select');
+        $(this).addClass('buttons-sports-select');
+        $sport = $(this).attr('data-sport');
+        filter(jsonData, '', $sport, '', 'sport', 'button');
+      });
 
-      $('.filter-input').on('keyup', function(){
-        	$name = $('.filter-name').val();
-        	$sport = $('.filter-sport').val();
-        	$year = $('.filter-year').val();
-					filter(jsonData, $name, $sport, $year, 'input');
+      $('.buttons-name').on('click', function(){
+        $('.buttons-name').removeClass('buttons-name-select');
+        $(this).addClass('buttons-name-select');
+        $name = $(this).attr('data-name');
+        filter(jsonData, $name, '', '', 'name', 'button');
+      });
+
+
+      $('.filter-input').on('click', function(){
+        	$('.filter-input').removeClass('filter-input-select');
+        	$(this).addClass('filter-input-select');
+        	$filter = $(this).attr('data-filter');
+
+        	if($filter == 'year'){
+            $('.name-btn-container').css('display', 'none');
+            $('.sport-btn-container').css('display', 'none');
+        	  $('.year-btn-container').css('display', 'block');
+					}else if($filter == 'sport'){
+            $('.name-btn-container').css('display', 'none');
+            $('.year-btn-container').css('display', 'none');
+            $('.sport-btn-container').css('display', 'block');
+					}else{
+            $('.year-btn-container').css('display', 'none');
+            $('.sport-btn-container').css('display', 'none');
+            $('.name-btn-container').css('display', 'block');
+					}
+
+        	filter(jsonData, '', '', '', $filter, 'default');
+
 			});
-
-      $('.filter-year').on('change', function(){
-        $name = $('.filter-name').val();
-        $sport = $('.filter-sport').val();
-        $year = $('.filter-year').val();
-
-        console.log($name + ' - ' + $sport + ' - ' + $year);
-        filter(jsonData, $name, $sport, $year, 'input');
-			});
-
     }
   });
 
 
-  function filter($data, $fName, $fSport, $fYear, $origin){
+  function filter($data, $fName, $fSport, $fYear, $filter, $action){
     $athleteContainer = '';
     $count = 0;
+    console.log($filter + ' - ' + $action);
     $.each($data.entrylist.year, function (index, key) {
       $year = key['@attributes']['id'];
-      if($origin == 'button'){
-        if($year == $fYear){
-          $entries = key['entry'];
-          console.log($entries);
-          $.each($entries, function(index, key){
-            $info = key['@attributes'];
-            if($fName == '' && $fSport == ''){
-              $('.filter-name').val('');
-              $('.filter-year').val('').trigger('select');
-              $('.filter-sport').val('');
-              $athleteContainer += generateHtml($info, $year);
-              $count++;
-            }
+      $entries = key['entry'];
+      if($action == 'default'){
+        if($filter == 'year'){
+						$defaultValue = $('.filter-year').attr('default-value');
+						if($defaultValue == $year){
+							console.log($entries);
+							$.each($entries, function(index, key){
+								$info = key['@attributes'];
+								if($fName == '' && $fSport == ''){
+									$('.filter-name').val('');
+									$('.filter-year').val('').trigger('select');
+									$('.filter-sport').val('');
+									$athleteContainer += generateHtml($info, $year);
+									$count++;
+								}
 
+							});
+						}
+				}else if($filter == 'sport'){
+          $.each($entries, function(index, key) {
+            $defaultValue = $('.filter-sport').attr('default-value');
+            $info = key['@attributes'];
+            $sport = $info['category'].toLowerCase();
+            if ($sport == $defaultValue.toLowerCase()) {
+                $athleteContainer += generateHtml($info, $year);
+                $count++;
+            }
+          });
+				}else if($filter == 'name'){
+          $.each($entries, function(index, key) {
+            $defaultValue = $('.filter-name').attr('default-value');
+            $info = key['@attributes'];
+            $lastname = $info['id'].split(',')[0].trim().toLowerCase();
+              if($lastname.startsWith($defaultValue.toLowerCase()) == true) {
+                $athleteContainer += generateHtml($info, $year);
+                $count++;
+              }
           });
 				}
 			}else{
-        $entries = key['entry'];
-
-
-        // scan all if year is empty
-				if($fYear != ''){
-					if($fYear == $year){
-            console.log('search year Input');
+        if($filter == 'year'){
+          if($fYear == $year){
+            console.log($entries);
             $.each($entries, function(index, key){
               $info = key['@attributes'];
-              $lastname = $info['id'].split(',')[0].trim().toLowerCase();
-              $sport = $info['category'].toLowerCase();
-              if($fName != '' && $fSport == ''){
-                if($lastname.startsWith($fName.toLowerCase()) == true) {
-                  $athleteContainer += generateHtml($info, $year);
-                  $count++;
-                }
-              }
-
-              if($fName == '' && $fSport != ''){
-                if($sport.startsWith($fSport.toLowerCase()) == true) {
-                  $athleteContainer += generateHtml($info, $year);
-                  $count++;
-                }
-              }
-
-              if($fName != '' && $fSport != ''){
-                if($sport.startsWith($fSport.toLowerCase()) == true && $lastname.startsWith($fName.toLowerCase()) == true) {
-                  $athleteContainer += generateHtml($info, $year);
-                  $count++;
-                }
-              }
-
               if($fName == '' && $fSport == ''){
+                $('.filter-name').val('');
+                $('.filter-year').val('').trigger('select');
+                $('.filter-sport').val('');
                 $athleteContainer += generateHtml($info, $year);
                 $count++;
-							}
+              }
+
             });
-					}
+          }
+				}else if($filter == 'sport'){
+          $.each($entries, function(index, key) {
+            $info = key['@attributes'];
+            $sport = $info['category'].toLowerCase();
+            if ($fSport.toLowerCase() == $sport) {
+              $athleteContainer += generateHtml($info, $year);
+              $count++;
+            }
+          });
 				}else{
-				  console.log('search year Input');
-          $.each($entries, function(index, key){
+          $.each($entries, function(index, key) {
             $info = key['@attributes'];
             $lastname = $info['id'].split(',')[0].trim().toLowerCase();
-            $sport = $info['category'].toLowerCase();
-            if($fName != '' && $fSport == ''){
-              if($lastname.startsWith($fName.toLowerCase()) == true) {
-                $athleteContainer += generateHtml($info, $year);
-                $count++;
-              }
-            }
-
-            if($fName == '' && $fSport != ''){
-              if($sport.startsWith($fSport.toLowerCase()) == true) {
-                $athleteContainer += generateHtml($info, $year);
-                $count++;
-              }
-						}
-
-            if($fName != '' && $fSport != ''){
-              if($sport.startsWith($fSport.toLowerCase()) == true && $lastname.startsWith($fName.toLowerCase()) == true) {
-                $athleteContainer += generateHtml($info, $year);
-                $count++;
-              }
+            if($lastname.startsWith($fName.toLowerCase()) == true) {
+              $athleteContainer += generateHtml($info, $year);
+              $count++;
             }
           });
 				}
-
 			}
-
     });
 
     $('.athlete-container').html($athleteContainer);
+
 
 	}
 
