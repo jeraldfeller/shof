@@ -120,6 +120,12 @@ p {
 		width:600px;
 		float: left;
 		margin: 45px 0 0 0;
+		direction: ltr;
+	}
+
+	.athlete-content{
+		width: 530px;
+		text-align: justify;
 	}
 
 	.athlete-info > img{
@@ -499,11 +505,12 @@ p {
 
   function generateHtml($info, $year){
     return '<div class="athlete-info">' +
-      '<img src="Pictures/'+$info['filename']+'.jpg" alt=""/>' +
-      '<h1>'+$info['id']+'</h1>' +
-      '<p>'+$info['category']+'<br> '+$year+'</p>' +
-      '<p>'+$info['description']+'</p>' +
-      '</div>';
+				'<div class="athlete-content">' +
+				'<img src="Pictures/'+$info['filename']+'.jpg" alt=""/>' +
+				'<h1>'+$info['id']+'</h1>' +
+				'<p>'+$info['category']+'<br> '+$year+'</p>' +
+				'<p>'+$info['description']+'</p>' +
+				'</div></div>';
   }
 
 
