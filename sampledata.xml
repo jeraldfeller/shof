@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entrylist>
+    <!--Name-->
+    <entry id="Abernathy, Micah"
+           has_image="false"
+           image_filename=""
+           has_video="true"
+           video_filename="test"
+           category="Football"
+           description="Atlanta, GA">
+    </entry>
+    <entry id="Abernathy IV, Ralph David"
+           has_image="false"
+           image_filename=""
+           has_video="false"
+           video_filename=""
+           category="Football"
+           description="Atlanta, GA">
+
+    </entry>
+    <entry id="Akin, Brent" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <entry id="Alexander, Frank" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <entry id="Alexander, Richard" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <entry id="Smith, John" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <entry id="Barnhill, John" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <entry id="Bolton, Chris" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <entry id="Bond, Robert" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <entry id="Bone, William" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <entry id="Bonham, Shane" has_image="false" image_filename="" has_video="false" video_filename="" category="Football" description="Atlanta, GA"></entry>
+    <!--Years-->
+    <year id = "2015">
+    <entry id="Abernathy, Micah"></entry>
+    <entry id="Abernathy IV, Ralph David"></entry>
+    <entry id="Akin, Brent"></entry>
+    </year>
+    <year id = "2017">
+    <entry id="Abernathy, Micah"></entry>
+    <entry id="Alexander, Frank"></entry>
+    </year>
+    <year id = "2017">
+    <entry id="Abernathy, Micah"></entry>
+    <entry id="Alexander, Frank"></entry>
+    </year>
+    <year id = "2018">
+    <entry id="Abernathy, Micah"></entry>
+    <entry id="Alexander, Frank"></entry>
+    <entry id="Alexander, Richard"></entry>
+    <entry id="Abernathy IV, Ralph David"></entry>
+    </year>
+    <!--Era-->
+    <coach id = "Butch Jones">
+    <entry id="Abernathy, Micah"></entry>
+    <entry id="Smith, John"></entry>
+    </coach>
+    <coach id = "Lane Kiffin">
+    <entry id="Barnhill, John"></entry>
+    <entry id="Bolton, Chris"></entry>
+    <entry id="Bond, Robert"></entry>
+    <entry id="Bone, William"></entry>
+    <entry id="Bonham, Shane"></entry>
+    </coach>
+</entrylist>
